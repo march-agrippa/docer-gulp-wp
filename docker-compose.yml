@@ -1,39 +1,69 @@
-version: '3'
+version: "3.7"
 
 services:
-  db:
-    image: mysql:5.7
-    volumes:
-      - db_data:/var/lib/mysql
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: somewordpress
-      MYSQL_DATABASE: wordpress
-      MYSQL_USER: wordpress
-      MYSQL_PASSWORD: wordpress
-
   wordpress:
-    depends_on:
-      - db
-    image: wordpress:5.3-php7.3-apache
+    build:
+      context: ./docker/wordpress
+      args:
+        - WP_VERSION=${WP_VERSION}
     ports:
-      - "8000:80"
-    restart: always
+      - ${PORT_HTTP}:80
     environment:
-      WORDPRESS_DB_HOST: db:3306
-      WORDPRESS_DB_USER: wordpress
-      WORDPRESS_DB_PASSWORD: wordpress
+      - WORDPRESS_DB_HOST=mysql:3306
+      - WORDPRESS_DB_NAME=${DB_NAME}
+      - WORDPRESS_DB_USER=${DB_USER}
+      - WORDPRESS_DB_PASSWORD=${DB_USERPASS}
+    volumes:
+      - ./dist/:/var/www/html
+      - ./docker/wordpress/php.ini:/usr/local/etc/php/php.ini
+    working_dir: /var/www/html/_kanri
+    depends_on:
+      - phpmyadmin
+
+  # gulp:
+  #   container_name: gulp
+  #   build:
+  #    context: ./
+  #    dockerfile: ./docker/node/Dockerfile
+  #   volumes:
+  #     - ./dist/assets/css:/workspace/dist/assets #コンパイル先
+  #     - ./dist/assets/scss:/workspace/dist/assets/scss #コンパイル元
+  #     - ./gulpfile.js:/workspace/gulpfile.js #gulpfile
+  #   tty: true
+
+  mysql:
+    image: mariadb:latest
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=${DB_ROOTPASS}
+      - MYSQL_DATABASE=${DB_NAME}
+      - MYSQL_USER=${DB_USER}
+      - MYSQL_PASSWORD=${DB_USERPASS}
+      - MYSQL_ALLOW_EMPTY_PASSWORD="no"
+      - TZ="Asia/Tokyo"
+    volumes:
+      - data-volume:/var/lib/mysql
+      - ./docker/mysql/initdb.d:/docker-entrypoint-initdb.d
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin:latest
-    #container_name: "phpmyadmin"
-    restart: always
-    depends_on:
-      - db
     ports:
-      - 8888:80
-    #volumes:
-    #  - ./docker/phpmyadmin/phpmyadmin-misc.ini:/usr/local/etc/php/conf.d/phpmyadmin-misc.ini
+      - ${PORT_MYADMIN}:80
+    environment:
+      - PMA_HOST=mysql
+      - PMA_USER=${DB_USER}
+      - PMA_PASSWORD=${DB_USERPASS}
+    depends_on:
+      - mysql
+
+  mailhog:
+    image: mailhog/mailhog:latest
+    ports:
+      - "${PORT_MAILBOX}:8025"
+      - "${PORT_MAIL}:1025"
 
 volumes:
-  db_data:
+  data-volume:
+    name: ${APP_NAME}
+    driver: local

@@ -1,0 +1,23 @@
+@import "mixin";
+
+$white:#fff;
+$gray:#8d9ead;
+$blue:#171632;
+$cyan:#2df7f9;
+$blue2:#26253d;
+
+$font:'Josefin Sans','Noto Sans JP','Helvetica Neue','Helvetica','Arial','Hiragino Sans','ヒラギノ角ゴシック',YuGothic,'Yu Gothic','メイリオ', Meiryo,'ＭＳ Ｐゴシック','MS PGothic' ;
+
+$ceaser_time: 1s;
+$ceaser_type: cubic-bezier(0.075, 0.820, 0.165, 1.000);
+
+$breakpoints: (
+  'xxl': 'screen and (max-width: 1752px)',
+  'xl': 'screen and (max-width: 1432px)',
+  'l' : 'screen and (max-width: 1250px)',
+  'm' : 'screen and (max-width: 1130px)',
+  's': 'screen and (max-width: 800px)',
+  'xs': 'screen and (max-width: 640px)',
+  'xxs' : 'screen and (max-width: 407px)',
+);
+// @include mq(s){}

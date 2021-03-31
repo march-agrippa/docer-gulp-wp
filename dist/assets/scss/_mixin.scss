@@ -1,0 +1,94 @@
+@mixin cf {
+  &::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+}
+// @include cf;
+
+@mixin margin_auto{
+  margin-right: auto;
+  margin-left: auto;
+}
+// @include margin_auto;
+
+@mixin abs ($top: auto, $right: auto, $bottom: auto, $left: auto) {
+  position: absolute;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+}
+// @include abs(5px, 20px, 10px, 15px);
+
+@mixin box_s{
+	box-sizing:border-box;
+}
+// @include box_s;
+
+@mixin transition($property: all, $duration: .5s){
+  transition: $property $duration 0s cubic-bezier(.165,.84,.44,1);
+}
+// @include transition(all,0.5s);
+
+@mixin transition2($property: all, $duration: .5s , $delay:0s){
+  transition: $property $duration $delay ease;
+}
+// @include transition2(all,0.5s, 0s);
+
+@mixin transition3($property: all, $duration: .5s, $delay:0s, $cubic:(.645,.045,.355,1)){
+  transition: $property $duration $delay cubic-bezier($cubic);
+}
+// @include transition3(all,0.5s,0s,(.645,.045,.355,1));
+
+@mixin origin($property: left, $property2: top){
+  transform-origin: $property $property2;
+}
+// @include origin(left, top);
+
+@mixin scale($atai:0){
+  transform: scale($atai);
+}
+// @include scale(1);
+
+@mixin scaleX($atai:0){
+  transform: scaleX($atai);
+}
+// @include scaleX(1);
+
+@mixin opacity($opacity) {
+     opacity: $opacity;
+     $opacityIE: $opacity * 100;
+     filter: alpha(opacity=$opacityIE);
+}
+// @include opacity(0);
+
+@mixin wh100{
+  width: 100%;
+  height: 100%;
+}
+// @include wh100;
+
+@mixin mq($breakpoint) {
+  @media #{map-get($breakpoints, $breakpoint)} {
+    @content;
+  }
+}
+// @include mq(m) {}
+
+@mixin link_text{
+  color: #1400A3;
+  border-bottom: 1px solid #8D7CD7;
+}
+@mixin animation($name, $duration: .5s, $timing:ease, $delay:0s, $iteration:1, $direction:normal, $fill-mode:both, $play-state:running ){
+  animation: $name $duration $timing $delay $iteration $direction $fill-mode $play-state ;
+}
+// @include animation(slide_line 1.0s ease 3s);
+
+@mixin fontsize($size: 24, $base: 16) {
+  font-size: $size + px;
+  font-size: ($size / $base) * 1rem;
+}
+// @include fontsize(16);
+

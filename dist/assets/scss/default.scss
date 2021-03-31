@@ -1,0 +1,225 @@
+@charset "utf-8";
+
+/*----------------------------------------------------------------------------------------------------
+	リセット及びbody初期設定 (このCSSは通常変更しない)
+----------------------------------------------------------------------------------------------------*/
+
+/* Style Reset(html5) */
+
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,
+big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,
+dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,
+aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,
+summary,time,mark,audio,video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+}
+main{
+	display: block;
+}
+ol,ul {
+	list-style: none;
+}
+blockquote,
+q {
+	quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+	vertical-align: top;
+}
+address {
+	font-style: normal;
+}
+caption,
+th,
+td {
+	font-weight: normal;
+	text-align: left;
+}
+
+a:focus {
+	outline: thin dotted;
+}
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+nav,
+section {
+	display: block;
+}
+audio,
+canvas,
+video {
+	display: inline-block;
+}
+audio:not([controls]) {
+	display: none;
+}
+del {
+	color: #333;
+}
+ins {
+	background: #fff9c0;
+	text-decoration: none;
+}
+hr {
+	border: 0;
+	height: 1px;
+	border-bottom: 1px solid #ccc;
+}
+sub,
+sup {
+	font-size: 75%;
+	line-height: 0;
+	position: relative;
+	vertical-align: baseline;
+}
+button{
+	border: none;
+	background: none;
+	display: block;
+	cursor:pointer;
+}
+textarea,
+input {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+sup {
+	top: -0.5em;
+}
+sub {
+	bottom: -0.25em;
+}
+small {
+	font-size: smaller;
+}
+
+button,
+a {
+	text-decoration:none;
+	opacity: 1.0;
+	transition: all 300ms ease;
+	-webkit-transition: all 300ms ease;
+	-moz-transition: all 300ms ease;
+}
+button:hover,
+a:hover{
+
+}
+
+html {
+	/*overflow-y: scroll;*/
+	font-size: 100%;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+}
+
+/*　画像
+---------------------------------------------------------------------------------------*/
+img{
+	border:0px none;
+	margin:0;
+	padding:0;
+	border: 0;
+	vertical-align: middle;
+	-ms-interpolation-mode: bicubic;
+	max-width: 100%;
+	height: auto;
+}
+
+/*　body
+---------------------------------------------------------------------------------------*/
+body {
+	font-family: Verdana, "游ゴシック", YuGothic, "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, sans-serif;
+	word-break: break-all;
+}
+/*　font
+---------------------------------------------------------------------------------------*/
+.fwn{
+	font-weight:normal;
+}
+
+/*　Bold
+---------------------------------------------------------------------------------------*/
+
+.bold{
+	font-weight: bold;
+}
+
+.strong{
+	font-weight:bold;
+}
+
+/*　Color
+---------------------------------------------------------------------------------------*/
+.red{
+	color:#CC0000;
+}
+
+.green{
+	color:#006600;
+}
+
+.brown{
+	color:#993300;
+}
+
+/*　フォントサイズ
+---------------------------------------------------------------------------------------*/
+
+.min{
+	font-family: 'Times New Roman', '游明朝体', 'Yu Mincho', 'ヒラギノ明朝 Pro W3', 'Hiragino Mincho Pro', 'HGS明朝B', 'Hiragino Mincho ProN', 'ＭＳ Ｐ明朝', 'MS PMincho', serif;
+}
+.goshick{
+	font-family: Verdana, "游ゴシック", YuGothic, "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, sans-serif;
+}
+.marugo{
+	font-family: "ヒラギノ丸ゴ Pro","Hiragino Maru Gothic Pro","メイリオ";
+}
+
+/*　clearfix
+---------------------------------------------------------------------------------------*/
+.clr:after {
+	content: "";
+	display: block;
+	height: 0;
+	line-height: 0;
+	clear: both;
+	visibility: hidden;
+}
+
+.clr {
+	display: inline-block;
+	min-height: 1%;
+}
+
+/* Hides from IE-mac \*/
+* html .clr{height: 1%;}
+.clr{display: block;}
+
+/* End hide from IE-mac */
+form{display: inline;}
+
+a:focus,
+*:focus {
+	outline:none;
+}
