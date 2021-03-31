@@ -1,23 +1,33 @@
-# ignore everything in the root except the "wp-content" directory.
-!wp-content/
-
-# ignore everything in the "wp-content" directory, except:
-# "mu-plugins", "plugins", "themes" directory
-wp-content/*
-!wp-content/mu-plugins/
-!wp-content/plugins/
-!wp-content/themes/
-
-# ignore these plugins
-wp-content/plugins/hello.php
-
-# ignore specific themes
-wp-content/themes/twenty*/
-
-# ignore node dependency directories
+# bin フォルダは要らない
 node_modules/
+*/assets/img/
+*/wp-config.php
+*/wp-content/uploads/
+*/wp-content/blogs.dir/
+*/wp-content/upgrade/
+*/wp-content/backup-db/
+*/wp-content/ai1wm-backups
+*/wp-content/wp-cache-config.php、wp-content/advanced-cache.php
+*/sitemap.xml、sitemap.xml.gz
+*/.log
+*/wp-content/cache/
+*/wp-content/backups/
+*/wp-content/languages/
+*/wp-content/plugins/
+*/wp-includes/*.php
+*/wp-admin/*.php
+*/license.txt/
+*/wp-activate.php/
 
-# ignore log files and databases
-*.log
-*.sql
-*.sqlite
+*_notes/
+*assets/scss/*.css
+
+*.jpg
+*.png
+*.gif
+*.mp4
+*.env
+*sitemap.xml
+google*.html
+
+!screenshot.jpg
